@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-06-12 18:02:02
+-- 產生時間： 2025-06-13 03:17:58
 -- 伺服器版本： 10.4.32-MariaDB
--- PHP 版本： 8.0.30
+-- PHP 版本： 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -1128,6 +1128,62 @@ CREATE TABLE `coupons` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '更新時間'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='優惠券的核心定義，一張券可被使用多次，其規則定義在 coupon_rules';
 
+--
+-- 傾印資料表的資料 `coupons`
+--
+
+INSERT INTO `coupons` (`id`, `name`, `code`, `content`, `start_at`, `end_at`, `status`, `total_quantity`, `per_user_limit`, `uses_per_instance`, `is_valid`, `created_at`, `updated_at`) VALUES
+(1, '夏季全館不限金額折 50 元', 'SUMMER50', '炎炎夏日，全館消費立即折抵 50 元！', '2025-05-31 08:00:00', '2025-08-31 07:59:59', 'active', 1000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(2, '新會員迎新禮 - 首次購物 85 折', 'WELCOME15', '感謝您的加入！首次購物享 85 折優惠，最高折抵 200 元。', '2024-12-31 08:00:00', NULL, 'active', 9999, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(3, 'VIP 客戶專屬 - 生日禮金 200 元', NULL, '親愛的 VIP，祝您生日快樂！這是我們為您準備的生日禮金。', '2024-12-31 08:00:00', '2025-12-31 07:59:59', 'active', 500, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(4, '古典樂迷專享 - 滿千折百', 'CLASSIC100', '購買古典音樂分類商品，單筆消費滿 1000 元即可折抵 100 元。', '2025-07-14 08:00:00', '2025-09-15 07:59:59', 'pending', 300, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(5, '週末快閃 - 全館免運費', 'FREEWKND', '本週末限定！全館不限金額通通免運費。', '2025-06-13 08:00:00', '2025-06-15 07:59:59', 'active', 2000, 1, 2, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(6, '爵士黑膠唱片 9 折優惠', 'JAZZVINYL', '精選爵士黑膠唱片，享受 9 折優惠。', '2025-05-19 08:00:00', '2025-07-20 07:59:59', 'active', 500, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(7, '【已停用】春季回饋活動', 'SPRINGBACK', '春季限定的回饋活動，感謝您的支持。', '2024-02-29 08:00:00', '2024-04-30 07:59:59', 'inactive', 1000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(8, '周年慶回饋金 300 元', NULL, '感謝您一直以來的支持，這是我們為您準備的周年慶回饋金。', '2025-09-30 08:00:00', '2025-10-31 07:59:59', 'pending', 100, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(9, '華語流行音樂 - 滿 500 折 50', 'MANDOPOP50', '購買華語流行分類商品，消費滿 500 元折 50 元。', '2025-06-09 08:00:00', '2025-08-10 07:59:59', 'active', 800, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(10, 'VIP 專屬 - 全館 95 折', 'VIPONLY5', 'VIP 會員獨享，全館商品結帳再 95 折！', '2024-12-31 08:00:00', NULL, 'active', 999, 1, 99, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(11, '年中慶 - 影音原聲帶 88 折', 'OST12OFF', '慶祝年中，電影與遊戲原聲帶分類商品，全面 88 折。', '2025-06-11 08:00:00', '2025-07-12 07:59:59', 'active', 888, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(12, '會員回饋金 - 不限分類折 88 元', NULL, '感謝會員支持，特別贈送 88 元回饋金，消費滿 800 元即可使用。', '2025-05-31 08:00:00', '2025-06-30 07:59:59', 'active', 1000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(13, '【即將推出】父親節特惠', 'PAPA88', '慶祝父親節，全館商品 88 折，提前預告！', '2025-07-31 08:00:00', '2025-08-08 07:59:59', 'pending', 2000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(14, '發燒天碟 - 指定商品折 188 元', 'HIFI188', '購買發燒天碟分類商品，享現金折抵 188 元。', '2025-06-14 08:00:00', '2025-08-15 07:59:59', 'active', 300, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(15, '深夜食堂 - 夜貓專屬 200 元折價券', 'MIDNIGHT', '每日 22:00 至 02:00 消費，滿 1500 元即可使用。', '2025-06-30 08:00:00', '2025-09-30 07:59:59', 'pending', 500, 5, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(16, '【已失效】2024 跨年狂歡慶', 'BYE2024', '感謝過去一年的支持，此為歷史活動券。', '2024-12-24 08:00:00', '2025-01-01 07:59:59', 'inactive', 3000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(17, '日韓流 - 精選專輯 9 折', 'KPOP10', '日韓流行分類商品，享 9 折優惠，最高折抵 150 元。', '2025-05-31 08:00:00', '2025-07-31 07:59:59', 'active', 600, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(18, 'VIP 加碼贈 - 生日當月免運券', NULL, 'VIP 會員生日當月，贈送一次不限金額免運機會。', '2024-12-31 08:00:00', NULL, 'active', 999, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(19, '西洋流行 - 滿 1200 折 120', 'WP120', '購買西洋流行分類商品，消費滿 1200 元折 120 元。', '2025-06-19 08:00:00', '2025-08-20 07:59:59', 'active', 750, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(20, '全品項適用 - 超級回饋券折 388', 'SUPER388', '全館商品適用，消費滿 3000 元，現折 388 元，並享免運！', '2025-08-31 08:00:00', '2025-09-30 07:59:59', 'pending', 100, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(21, '古典樂迷回饋 - 滿 600 折 60', 'CLASSIC60', '專為古典樂迷設計，購買古典分類商品滿 600 元，現折 60 元。', '2025-06-12 08:00:00', '2025-07-31 07:59:59', 'active', 500, 2, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(22, '爵士之夜 - 全分類 92 折', 'JAZZNIGHT8', '無論黑膠或 CD，爵士分類商品全面 92 折。', '2025-06-14 08:00:00', '2025-07-15 07:59:59', 'active', 400, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(23, '【已失效】母親節感謝祭', 'MOM2025', '感謝全天下的媽媽，母親節特別活動。', '2025-04-30 08:00:00', '2025-05-12 07:59:59', 'inactive', 1500, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(24, 'VIP 專屬 - 每月小禮金 50 元', NULL, 'VIP 會員每月可領取 50 元購物金，無消費門檻。', '2024-12-31 08:00:00', NULL, 'active', 9999, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(25, '中秋月圓禮券 - 滿 1500 折 150', 'MOON150', '慶中秋，全館消費滿額享優惠。', '2025-08-31 08:00:00', '2025-09-17 07:59:59', 'pending', 1000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(26, '開學季 - 文學原聲帶 85 折', 'BACKTOSCHOOL', '購買原聲帶分類，為您的閱讀時光配樂。', '2025-08-19 08:00:00', '2025-09-20 07:59:59', 'pending', 800, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(27, '華語金曲回顧 - 滿 888 折 88', 'MPOP88', '重溫經典，華語分類商品滿額折。', '2025-06-30 08:00:00', '2025-08-31 07:59:59', 'active', 600, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(28, '高消費顧客回饋 - 滿 5000 折 500', 'BIGSPENDER', '單筆消費滿 5000 元，直接折抵 500 元。', '2025-05-31 08:00:00', '2025-12-31 07:59:59', 'active', 200, 5, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(29, '【已停用】系統測試券請勿使用', 'TEST000', '此為系統開發測試用券，已停用。', '2023-12-31 08:00:00', '2024-01-02 07:59:59', 'inactive', 10, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(30, '會員周年禮 - 全館 9 折券', NULL, '感謝您加入滿周年！贈送您一張 9 折優惠券，最高可折 300 元。', '2024-12-31 08:00:00', NULL, 'active', 5000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(31, '西洋排行榜金曲 - 2件 88 折', 'WPCHART12', '購買西洋流行分類商品，任選兩件享 88 折。', '2025-06-09 08:00:00', '2025-07-10 07:59:59', 'active', 1000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(32, '發燒天碟收藏家 - 免運費優惠', 'HIFIFREE', '專為發燒天碟收藏家準備，購買此分類商品即享免運。', '2025-06-30 08:00:00', '2025-09-30 07:59:59', 'pending', 300, 3, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(33, '日韓偶像祭 - 滿 999 折 100', 'JKIDOL100', '日韓偶像周邊及專輯，滿額折價。', '2025-07-14 08:00:00', '2025-08-15 07:59:59', 'pending', 800, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(34, '新會員限定 - 首次購物免運', 'NEWFREE', '新註冊會員，首次下單不限金額免運費。', '2024-12-31 08:00:00', NULL, 'active', 9999, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(35, '雙 11 狂歡節 - 全館 20% OFF', 'SALE1111', '年度最大檔，全館商品直接 8 折！', '2025-11-09 08:00:00', '2025-11-12 07:59:59', 'pending', 5000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(36, '聖誕禮物卡 - 儲值金 100 元', 'XMAS100', '聖誕快樂！贈送您 100 元購物金。', '2025-11-30 08:00:00', '2025-12-25 07:59:59', 'pending', 2000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(37, '【已失效】情人節特別獻禮', 'LOVE2025', '情人節活動已圓滿結束。', '2025-02-09 08:00:00', '2025-02-15 07:59:59', 'inactive', 1000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(38, '清倉特賣 - 指定商品 5 折起', 'CLEARANCE50', '精選商品出清，售完為止。', '2025-06-19 08:00:00', '2025-07-20 07:59:59', 'active', 300, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(39, '雨天聽音樂 - 不限額 95 折', 'RAINYDAY5', '雨天限定，在家享受音樂最對味，全館 95 折。', '2025-06-12 08:00:00', '2025-08-31 07:59:59', 'active', 1000, 1, 5, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(40, '會員生日禮 - 當月壽星 8 折券', NULL, '生日快樂！壽星獨享，全館商品 8 折，上限 500 元。', '2024-12-31 08:00:00', NULL, 'active', 8000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(41, '古典樂入門推薦 - 折 30 元', 'CLASSICNEW', '購買古典樂入門推薦清單商品，立即折抵 30 元。', '2025-06-12 08:00:00', '2025-12-31 07:59:59', 'active', 1000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(42, '爵士樂團購 - 滿 3000 折 450', 'JAZZGROUP', '團購爵士音樂，滿 3000 元，享 85 折優惠(折 450)。', '2025-06-12 08:00:00', '2025-09-30 07:59:59', 'active', 100, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(43, '電影原聲帶特展 - 第 2 件半價', 'OST50OFF', '電影原聲帶特展，任選兩件，第二件半價(等同 75 折)。', '2025-07-31 08:00:00', '2025-08-31 07:59:59', 'pending', 500, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(44, 'VIP 續會禮 - 200 元感謝金', NULL, '感謝您續會 VIP！這是我們準備的 200 元感謝金。', '2024-12-31 08:00:00', NULL, 'active', 1000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(45, '夏季畢業季 - 全館滿千免運', 'GRADFREE', '祝福所有畢業生！全館消費滿千，即享免運。', '2025-06-12 08:00:00', '2025-07-31 07:59:59', 'active', 1500, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(46, '【已停用】端午節活動券', 'DRAGONBOAT', '端午節活動已結束。', '2025-05-24 08:00:00', '2025-06-05 07:59:59', 'inactive', 800, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(47, '補班日不憂鬱 - 小額折價 20 元', 'WORK20', '補班日為您打氣！不限金額折 20 元。', '2025-06-19 08:00:00', '2025-06-20 07:59:59', 'pending', 2000, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(48, '黑膠唱片日 - 精選黑膠 88 折', 'VINYLDAY', '慶祝黑膠唱片日，精選品項 88 折優惠。', '2025-10-09 08:00:00', '2025-10-12 07:59:59', 'pending', 400, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(49, '平台周年慶 - 全站免運費', 'ANNIVFREE', '慶祝平台周年，全站不限金額、不限品項，通通免運費！', '2025-09-30 08:00:00', '2025-10-07 07:59:59', 'pending', 10000, 1, 3, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36'),
+(50, '問卷填寫感謝禮 - 30元購物金', NULL, '感謝您填寫問卷，贈送您 30 元購物金作為獎勵。', '2025-06-12 08:00:00', '2025-08-31 07:59:59', 'active', 500, 1, 1, 1, '2025-06-12 16:53:36', '2025-06-12 16:53:36');
+
 -- --------------------------------------------------------
 
 --
@@ -1144,6 +1200,62 @@ CREATE TABLE `coupon_rules` (
   `free_shipping` tinyint(1) DEFAULT 0 COMMENT '是否免運費',
   `is_valid` tinyint(1) NOT NULL DEFAULT 1 COMMENT '軟刪除標記 (1:有效, 0:已刪除)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='定義優惠券如何折扣，一張券可有多重規則 (例如 折扣+免運)';
+
+--
+-- 傾印資料表的資料 `coupon_rules`
+--
+
+INSERT INTO `coupon_rules` (`id`, `coupon_id`, `min_spend`, `discount_type`, `discount_value`, `max_discount_amount`, `free_shipping`, `is_valid`) VALUES
+(1, 1, NULL, 'fixed', 50, NULL, 0, 1),
+(2, 2, NULL, 'percent', 15, 200, 0, 1),
+(3, 3, 1000, 'fixed', 200, NULL, 0, 1),
+(4, 4, 1000, 'fixed', 100, NULL, 0, 1),
+(5, 5, NULL, 'fixed', 100, NULL, 1, 1),
+(6, 6, NULL, 'percent', 10, NULL, 0, 1),
+(7, 7, 500, 'fixed', 50, NULL, 0, 1),
+(8, 8, 1500, 'fixed', 300, NULL, 1, 1),
+(9, 9, 500, 'fixed', 50, NULL, 0, 1),
+(10, 10, NULL, 'percent', 5, 300, 1, 1),
+(11, 11, NULL, 'percent', 12, NULL, 0, 1),
+(12, 12, 800, 'fixed', 88, NULL, 0, 1),
+(13, 13, NULL, 'percent', 12, 500, 0, 1),
+(14, 14, NULL, 'fixed', 188, NULL, 0, 1),
+(15, 15, 1500, 'fixed', 200, NULL, 0, 1),
+(16, 16, 1000, 'fixed', 100, NULL, 0, 1),
+(17, 17, NULL, 'percent', 10, 150, 0, 1),
+(18, 18, NULL, 'fixed', 1, NULL, 1, 1),
+(19, 19, 1200, 'fixed', 120, NULL, 0, 1),
+(20, 20, 3000, 'fixed', 388, NULL, 1, 1),
+(21, 21, 600, 'fixed', 60, NULL, 0, 1),
+(22, 22, NULL, 'percent', 8, NULL, 0, 1),
+(23, 23, 1200, 'fixed', 120, NULL, 1, 1),
+(24, 24, NULL, 'fixed', 50, NULL, 0, 1),
+(25, 25, 1500, 'fixed', 150, NULL, 0, 1),
+(26, 26, NULL, 'percent', 15, 200, 0, 1),
+(27, 27, 888, 'fixed', 88, NULL, 0, 1),
+(28, 28, 5000, 'fixed', 500, NULL, 1, 1),
+(29, 29, NULL, 'fixed', 1, NULL, 0, 1),
+(30, 30, NULL, 'percent', 10, 300, 0, 1),
+(31, 31, NULL, 'percent', 12, NULL, 0, 1),
+(32, 32, 500, 'fixed', 1, NULL, 1, 1),
+(33, 33, 999, 'fixed', 100, NULL, 0, 1),
+(34, 34, NULL, 'fixed', 1, NULL, 1, 1),
+(35, 35, NULL, 'percent', 20, 1000, 0, 1),
+(36, 36, 500, 'fixed', 100, NULL, 0, 1),
+(37, 37, 2000, 'fixed', 214, NULL, 0, 1),
+(38, 38, NULL, 'percent', 50, NULL, 0, 1),
+(39, 39, NULL, 'percent', 5, 100, 0, 1),
+(40, 40, NULL, 'percent', 20, 500, 1, 1),
+(41, 41, NULL, 'fixed', 30, NULL, 0, 1),
+(42, 42, 3000, 'fixed', 450, NULL, 0, 1),
+(43, 43, NULL, 'percent', 25, NULL, 0, 1),
+(44, 44, 1000, 'fixed', 200, NULL, 1, 1),
+(45, 45, 1000, 'fixed', 1, NULL, 1, 1),
+(46, 46, 800, 'fixed', 50, NULL, 0, 1),
+(47, 47, NULL, 'fixed', 20, NULL, 0, 1),
+(48, 48, NULL, 'percent', 12, NULL, 0, 1),
+(49, 49, NULL, 'fixed', 1, NULL, 1, 1),
+(50, 50, 300, 'fixed', 30, NULL, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1174,6 +1286,62 @@ CREATE TABLE `coupon_targets` (
   `target_value` varchar(255) NOT NULL COMMENT '具體值',
   `is_valid` tinyint(1) NOT NULL DEFAULT 1 COMMENT '軟刪除標記 (1:有效, 0:已刪除)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='限制優惠券可用於特定商品、分類或會員';
+
+--
+-- 傾印資料表的資料 `coupon_targets`
+--
+
+INSERT INTO `coupon_targets` (`id`, `coupon_id`, `target_type`, `target_value`, `is_valid`) VALUES
+(1, 1, 'product', '99', 1),
+(2, 2, 'member', 'm2', 1),
+(3, 3, 'member', 'm0', 1),
+(4, 4, 'product', '1', 1),
+(5, 5, 'product', '99', 1),
+(6, 6, 'product', '3', 1),
+(7, 7, 'product', '99', 1),
+(8, 8, 'member', 'm1', 1),
+(9, 9, 'product', '5', 1),
+(10, 10, 'member', 'm3', 1),
+(11, 11, 'product', '7', 1),
+(12, 12, 'member', 'm2', 1),
+(13, 13, 'product', '99', 1),
+(14, 14, 'product', '2', 1),
+(15, 15, 'product', '99', 1),
+(16, 16, 'product', '99', 1),
+(17, 17, 'product', '6', 1),
+(18, 18, 'member', 'm0', 1),
+(19, 19, 'product', '4', 1),
+(20, 20, 'product', '99', 1),
+(21, 21, 'product', '1', 1),
+(22, 22, 'product', '3', 1),
+(23, 23, 'product', '99', 1),
+(24, 24, 'member', 'm3', 1),
+(25, 25, 'product', '99', 1),
+(26, 26, 'product', '7', 1),
+(27, 27, 'product', '5', 1),
+(28, 28, 'product', '99', 1),
+(29, 29, 'product', '99', 1),
+(30, 30, 'member', 'm1', 1),
+(31, 31, 'product', '4', 1),
+(32, 32, 'product', '2', 1),
+(33, 33, 'product', '6', 1),
+(34, 34, 'member', 'm2', 1),
+(35, 35, 'product', '99', 1),
+(36, 36, 'product', '99', 1),
+(37, 37, 'product', '99', 1),
+(38, 38, 'product', '99', 1),
+(39, 39, 'member', 'm2', 1),
+(40, 40, 'member', 'm0', 1),
+(41, 41, 'product', '1', 1),
+(42, 42, 'product', '3', 1),
+(43, 43, 'product', '7', 1),
+(44, 44, 'member', 'm3', 1),
+(45, 45, 'product', '99', 1),
+(46, 46, 'product', '99', 1),
+(47, 47, 'product', '99', 1),
+(48, 48, 'product', '99', 1),
+(49, 49, 'product', '99', 1),
+(50, 50, 'member', 'm2', 1);
 
 -- --------------------------------------------------------
 
@@ -3388,6 +3556,236 @@ INSERT INTO `vinyl_genre` (`id`, `genre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `vinyl_img`
+--
+
+CREATE TABLE `vinyl_img` (
+  `id` int(11) NOT NULL,
+  `shs_id` varchar(20) DEFAULT NULL,
+  `img_name` varchar(50) DEFAULT NULL,
+  `img_url` varchar(100) DEFAULT NULL,
+  `img_path` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 傾印資料表的資料 `vinyl_img`
+--
+
+INSERT INTO `vinyl_img` (`id`, `shs_id`, `img_name`, `img_url`, `img_path`) VALUES
+(1, '111455', '111455_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250602085828_0.jpg&w=800&h=800', 'img\\111455_1.jpeg'),
+(2, '111426', '111426_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250527103854_0.png&w=800&h=800', 'img\\111426_1.jpeg'),
+(3, '111407', '111407_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250519054558_0.jpg&w=800&h=800', 'img\\111407_1.jpeg'),
+(4, '111406', '111406_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250519054255_0.jpg&w=800&h=800', 'img\\111406_1.jpeg'),
+(5, '111344', '111344_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250503111043_0.jpg&w=800&h=800', 'img\\111344_1.jpeg'),
+(6, '111340', '111340_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250502014158_0.jpg&w=800&h=800', 'img\\111340_1.jpeg'),
+(7, '111316', '111316_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250425053444_0.jpg&w=800&h=800', 'img\\111316_1.jpeg'),
+(8, '111296', '111296_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250419020439_0.jpg&w=800&h=800', 'img\\111296_1.jpeg'),
+(9, '111253', '111253_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250404020125_0.jpg&w=800&h=800', 'img\\111253_1.jpeg'),
+(10, '111236', '111236_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250401033152_0.jpg&w=800&h=800', 'img\\111236_1.jpeg'),
+(11, '111207', '111207_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250324102852_0.jpg&w=800&h=800', 'img\\111207_1.jpeg'),
+(12, '111181', '111181_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250314103617_0.jpg&w=800&h=800', 'img\\111181_1.jpeg'),
+(13, '111127', '111127_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250225051633_0.jpg&w=800&h=800', 'img\\111127_1.jpeg'),
+(14, '111126', '111126_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250225051416_0.jpg&w=800&h=800', 'img\\111126_1.jpeg'),
+(15, '111089', '111089_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250212104415_0.jpg&w=800&h=800', 'img\\111089_1.jpeg'),
+(16, '111088', '111088_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250212103913_0.jpg&w=800&h=800', 'img\\111088_1.jpeg'),
+(17, '111048', '111048_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250123050721_0.jpg&w=800&h=800', 'img\\111048_1.jpeg'),
+(18, '111008', '111008_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250111040215_0.jpg&w=800&h=800', 'img\\111008_1.jpeg'),
+(19, '110988', '110988_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250102051253_0.jpg&w=800&h=800', 'img\\110988_1.jpeg'),
+(20, '110987', '110987_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250102050758_0.jpg&w=800&h=800', 'img\\110987_1.jpeg'),
+(21, '110986', '110986_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250102050408_0.jpg&w=800&h=800', 'img\\110986_1.jpeg'),
+(22, '110985', '110985_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250102045956_0.jpg&w=800&h=800', 'img\\110985_1.jpeg'),
+(23, '110955', '110955_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241225122652_0.jpg&w=800&h=800', 'img\\110955_1.jpeg'),
+(24, '110940', '110940_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241220115613_0.jpg&w=800&h=800', 'img\\110940_1.jpeg'),
+(25, '110904', '110904_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241206102857_0.jpg&w=800&h=800', 'img\\110904_1.jpeg'),
+(26, '110896', '110896_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241203115609_0.jpg&w=800&h=800', 'img\\110896_1.jpeg'),
+(27, '110868', '110868_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241122053028_0.jpg&w=800&h=800', 'img\\110868_1.jpeg'),
+(28, '110867', '110867_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241122052232_0.jpg&w=800&h=800', 'img\\110867_1.jpeg'),
+(29, '110865', '110865_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241122050516_0.jpg&w=800&h=800', 'img\\110865_1.jpeg'),
+(30, '110863', '110863_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241122044147_0.jpg&w=800&h=800', 'img\\110863_1.jpeg'),
+(31, '111353', '111353_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250504100546_0.jpg&w=800&h=800', 'img\\111353_1.jpeg'),
+(32, '111332', '111332_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250430104357_0.jpg&w=800&h=800', 'img\\111332_1.jpeg'),
+(33, '111331', '111331_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250429045429_0.jpg&w=800&h=800', 'img\\111331_1.jpeg'),
+(34, '111330', '111330_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250429044804_0.jpg&w=800&h=800', 'img\\111330_1.jpeg'),
+(35, '111254', '111254_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250404021856_0.jpg&w=800&h=800', 'img\\111254_1.jpeg'),
+(36, '111160', '111160_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250308085854_0.jpg&w=800&h=800', 'img\\111160_1.jpeg'),
+(37, '110948', '110948_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241221030038_0.jpg&w=800&h=800', 'img\\110948_1.jpeg'),
+(38, '110947', '110947_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241221110524_0.jpg&w=800&h=800', 'img\\110947_1.jpeg'),
+(39, '110921', '110921_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241206044759_0.jpg&w=800&h=800', 'img\\110921_1.jpeg'),
+(40, '110920', '110920_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241206044243_0.jpg&w=800&h=800', 'img\\110920_1.jpeg'),
+(41, '110919', '110919_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241206044018_0.jpg&w=800&h=800', 'img\\110919_1.jpeg'),
+(42, '110876', '110876_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241128083546_0.jpg&w=800&h=800', 'img\\110876_1.jpeg'),
+(43, '110666', '110666_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241013105211_0.jpg&w=800&h=800', 'img\\110666_1.jpeg'),
+(44, '110665', '110665_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241013104901_0.jpg&w=800&h=800', 'img\\110665_1.jpeg'),
+(45, '110497', '110497_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240828053744_0.jpg&w=800&h=800', 'img\\110497_1.jpeg'),
+(46, '110469', '110469_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240827032010_0.jpg&w=800&h=800', 'img\\110469_1.jpeg'),
+(47, '110457', '110457_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240823020453_0.jpg&w=800&h=800', 'img\\110457_1.jpeg'),
+(48, '110425', '110425_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240817111748_0.jpg&w=800&h=800', 'img\\110425_1.jpeg'),
+(49, '110311', '110311_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240722013409_0.jpg&w=800&h=800', 'img\\110311_1.jpeg'),
+(50, '110258', '110258_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240717020825_0.jpg&w=800&h=800', 'img\\110258_1.jpeg'),
+(51, '110013', '110013_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240601014026_0.jpg&w=800&h=800', 'img\\110013_1.jpeg'),
+(52, '109639', '109639_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240326045644_0.jpg&w=800&h=800', 'img\\109639_1.jpeg'),
+(53, '109351', '109351_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240202112433_0.jpg&w=800&h=800', 'img\\109351_1.jpeg'),
+(54, '109320', '109320_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240124012629_0.jpg&w=800&h=800', 'img\\109320_1.jpeg'),
+(55, '109312', '109312_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240122044211_0.jpg&w=800&h=800', 'img\\109312_1.jpeg'),
+(56, '109303', '109303_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240118032234_0.jpg&w=800&h=800', 'img\\109303_1.jpeg'),
+(57, '109187', '109187_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20231228112341_0.jpg&w=800&h=800', 'img\\109187_1.jpeg'),
+(58, '109186', '109186_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20231228111851_0.jpg&w=800&h=800', 'img\\109186_1.jpeg'),
+(59, '109185', '109185_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20231228111333_0.jpg&w=800&h=800', 'img\\109185_1.jpeg'),
+(60, '109143', '109143_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20231222043029_0.jpg&w=800&h=800', 'img\\109143_1.jpeg'),
+(61, '111318', '111318_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250425055039_0.jpg&w=800&h=800', 'img\\111318_1.jpeg'),
+(62, '111180', '111180_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250313032411_0.jpg&w=800&h=800', 'img\\111180_1.jpeg'),
+(63, '111157', '111157_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250308105919_0.jpg&w=800&h=800', 'img\\111157_1.jpeg'),
+(64, '111147', '111147_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250304025937_0.jpg&w=800&h=800', 'img\\111147_1.jpeg'),
+(65, '111106', '111106_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250220034615_0.jpg&w=800&h=800', 'img\\111106_1.jpeg'),
+(66, '111087', '111087_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250211095053_0.jpg&w=800&h=800', 'img\\111087_1.jpeg'),
+(67, '111040', '111040_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250123121942_0.jpg&w=800&h=800', 'img\\111040_1.jpeg'),
+(68, '111037', '111037_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250121021401_0.jpg&w=800&h=800', 'img\\111037_1.jpeg'),
+(69, '110894', '110894_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241203104441_0.jpg&w=800&h=800', 'img\\110894_1.jpeg'),
+(70, '110891', '110891_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241202030526_0.jpg&w=800&h=800', 'img\\110891_1.jpeg'),
+(71, '110887', '110887_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241130040656_0.JPG&w=800&h=800', 'img\\110887_1.jpeg'),
+(72, '110804', '110804_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241119011653_0.jpg&w=800&h=800', 'img\\110804_1.jpeg'),
+(73, '110801', '110801_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241118123513_0.jpg&w=800&h=800', 'img\\110801_1.jpeg'),
+(74, '110781', '110781_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241109120312_0.jpg&w=800&h=800', 'img\\110781_1.jpeg'),
+(75, '110757', '110757_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241105013910_0.jpg&w=800&h=800', 'img\\110757_1.jpeg'),
+(76, '110743', '110743_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241030030554_0.jpg&w=800&h=800', 'img\\110743_1.jpeg'),
+(77, '110695', '110695_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241015091901_0.jpg&w=800&h=800', 'img\\110695_1.jpeg'),
+(78, '110672', '110672_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241014054513_0.jpg&w=800&h=800', 'img\\110672_1.jpeg'),
+(79, '110645', '110645_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241009121850_0.jpg&w=800&h=800', 'img\\110645_1.jpeg'),
+(80, '110619', '110619_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240927041932_0.png&w=800&h=800', 'img\\110619_1.jpeg'),
+(81, '110617', '110617_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240926045232_0.jpg&w=800&h=800', 'img\\110617_1.jpeg'),
+(82, '110615', '110615_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240925042954_0.jpg&w=800&h=800', 'img\\110615_1.jpeg'),
+(83, '110613', '110613_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240925013606_0.jpg&w=800&h=800', 'img\\110613_1.jpeg'),
+(84, '110597', '110597_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240920053154_0.jpg&w=800&h=800', 'img\\110597_1.jpeg'),
+(85, '110576', '110576_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240916075855_0.jpg&w=800&h=800', 'img\\110576_1.jpeg'),
+(86, '110570', '110570_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240914104144_0.jpg&w=800&h=800', 'img\\110570_1.jpeg'),
+(87, '110502', '110502_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240830103657_0.jpg&w=800&h=800', 'img\\110502_1.jpeg'),
+(88, '110501', '110501_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240829052318_0.jpg&w=800&h=800', 'img\\110501_1.jpeg'),
+(89, '110498', '110498_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240828055429_0.jpg&w=800&h=800', 'img\\110498_1.jpeg'),
+(90, '110456', '110456_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240823013546_0.jpg&w=800&h=800', 'img\\110456_1.jpeg'),
+(91, '111386', '111386_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250515010520_0.jpg&w=800&h=800', 'img\\111386_1.jpeg'),
+(92, '111329', '111329_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250429104946_0.jpg&w=800&h=800', 'img\\111329_1.jpeg'),
+(93, '111299', '111299_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250422104020_0.jpg&w=800&h=800', 'img\\111299_1.jpeg'),
+(94, '111269', '111269_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250408051713_0.jpg&w=800&h=800', 'img\\111269_1.jpeg'),
+(95, '111268', '111268_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250408051117_0.jpg&w=800&h=800', 'img\\111268_1.jpeg'),
+(96, '111257', '111257_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250405110711_0.jpg&w=800&h=800', 'img\\111257_1.jpeg'),
+(97, '111256', '111256_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250405104602_0.jpg&w=800&h=800', 'img\\111256_1.jpeg'),
+(98, '111235', '111235_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250329053325_0.jpg&w=800&h=800', 'img\\111235_1.jpeg'),
+(99, '111204', '111204_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250321041824_0.jpg&w=800&h=800', 'img\\111204_1.jpeg'),
+(100, '111195', '111195_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250318052407_0.jpg&w=800&h=800', 'img\\111195_1.jpeg'),
+(101, '111188', '111188_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250317121721_0.jpg&w=800&h=800', 'img\\111188_1.jpeg'),
+(102, '111173', '111173_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250312092048_0.jpg&w=800&h=800', 'img\\111173_1.jpeg'),
+(103, '111164', '111164_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250310012514_0.jpg&w=800&h=800', 'img\\111164_1.jpeg'),
+(104, '111163', '111163_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250310010143_0.jpg&w=800&h=800', 'img\\111163_1.jpeg'),
+(105, '111140', '111140_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250302091548_0.jpg&w=800&h=800', 'img\\111140_1.jpeg'),
+(106, '111138', '111138_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250302085100_0.jpg&w=800&h=800', 'img\\111138_1.jpeg'),
+(107, '111134', '111134_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250228033355_0.jpg&w=800&h=800', 'img\\111134_1.jpeg'),
+(108, '111129', '111129_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250226021905_0.jpg&w=800&h=800', 'img\\111129_1.jpeg'),
+(109, '111123', '111123_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250225120332_0.jpg&w=800&h=800', 'img\\111123_1.jpeg'),
+(110, '111119', '111119_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250224100850_0.jpg&w=800&h=800', 'img\\111119_1.jpeg'),
+(111, '111109', '111109_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250220121044_0.jpg&w=800&h=800', 'img\\111109_1.jpeg'),
+(112, '111077', '111077_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250208122351_0.jpg&w=800&h=800', 'img\\111077_1.jpeg'),
+(113, '111074', '111074_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250207120045_0.jpg&w=800&h=800', 'img\\111074_1.jpeg'),
+(114, '111073', '111073_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250206090821_0.jpg&w=800&h=800', 'img\\111073_1.jpeg'),
+(115, '111070', '111070_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250206030242_0.jpg&w=800&h=800', 'img\\111070_1.jpeg'),
+(116, '111063', '111063_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250204110452_0.jpg&w=800&h=800', 'img\\111063_1.jpeg'),
+(117, '111062', '111062_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250204105938_0.jpg&w=800&h=800', 'img\\111062_1.jpeg'),
+(118, '111057', '111057_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250131104411_0.jpg&w=800&h=800', 'img\\111057_1.jpeg'),
+(119, '111052', '111052_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250126093126_0.jpg&w=800&h=800', 'img\\111052_1.jpeg'),
+(120, '111047', '111047_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250123043534_0.jpg&w=800&h=800', 'img\\111047_1.jpeg'),
+(121, '111401', '111401_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250519105701_0.jpg&w=800&h=800', 'img\\111401_1.jpeg'),
+(122, '111346', '111346_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250503122529_0.jpg&w=800&h=800', 'img\\111346_1.jpeg'),
+(123, '111345', '111345_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250503122106_0.jpg&w=800&h=800', 'img\\111345_1.jpeg'),
+(124, '111322', '111322_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250426012209_0.jpg&w=800&h=800', 'img\\111322_1.jpeg'),
+(125, '111274', '111274_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250414054756_0.jpg&w=800&h=800', 'img\\111274_1.jpeg'),
+(126, '111194', '111194_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250318040354_0.jpg&w=800&h=800', 'img\\111194_1.jpeg'),
+(127, '111060', '111060_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250204014454_0.jpg&w=800&h=800', 'img\\111060_1.jpeg'),
+(128, '111059', '111059_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250204114309_0.jpg&w=800&h=800', 'img\\111059_1.jpeg'),
+(129, '110960', '110960_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241225052502_0.jpg&w=800&h=800', 'img\\110960_1.jpeg'),
+(130, '110911', '110911_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241206012519_0.jpg&w=800&h=800', 'img\\110911_1.jpeg'),
+(131, '110853', '110853_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241122033808_0.jpg&w=800&h=800', 'img\\110853_1.jpeg'),
+(132, '110746', '110746_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241102102907_0.jpg&w=800&h=800', 'img\\110746_1.jpeg'),
+(133, '110719', '110719_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241022035327_0.jpg&w=800&h=800', 'img\\110719_1.jpeg'),
+(134, '110616', '110616_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240926114743_0.jpg&w=800&h=800', 'img\\110616_1.jpeg'),
+(135, '110488', '110488_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240828122131_0.jpg&w=800&h=800', 'img\\110488_1.jpeg'),
+(136, '110436', '110436_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240820125344_0.jpg&w=800&h=800', 'img\\110436_1.jpeg'),
+(137, '110420', '110420_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240815044431_0.JPG&w=800&h=800', 'img\\110420_1.jpeg'),
+(138, '110398', '110398_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240813011552_0.jpg&w=800&h=800', 'img\\110398_1.jpeg'),
+(139, '110364', '110364_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240803104708_0.jpg&w=800&h=800', 'img\\110364_1.jpeg'),
+(140, '110256', '110256_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240716050746_0.jpg&w=800&h=800', 'img\\110256_1.jpeg'),
+(141, '110151', '110151_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240627054850_0.jpg&w=800&h=800', 'img\\110151_1.jpeg'),
+(142, '110090', '110090_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240614034940_0.jpg&w=800&h=800', 'img\\110090_1.jpeg'),
+(143, '110024', '110024_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240604124656_0.jpg&w=800&h=800', 'img\\110024_1.jpeg'),
+(144, '110011', '110011_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240531060028_0.jpg&w=800&h=800', 'img\\110011_1.jpeg'),
+(145, '109968', '109968_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240909102045_0.jpg&w=800&h=800', 'img\\109968_1.jpeg'),
+(146, '109967', '109967_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240523015240_0.jpg&w=800&h=800', 'img\\109967_1.jpeg'),
+(147, '109953', '109953_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240520084943_0.jpeg&w=800&h=800', 'img\\109953_1.jpeg'),
+(148, '109793', '109793_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240423055835_0.jpg&w=800&h=800', 'img\\109793_1.jpeg'),
+(149, '109792', '109792_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240423055314_0.jpg&w=800&h=800', 'img\\109792_1.jpeg'),
+(150, '109707', '109707_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240409113300_0.jpg&w=800&h=800', 'img\\109707_1.jpeg'),
+(151, '111377', '111377_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250512042051_0.jpg&w=800&h=800', 'img\\111377_1.jpeg'),
+(152, '111370', '111370_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250508032735_0.jpg&w=800&h=800', 'img\\111370_1.jpeg'),
+(153, '111369', '111369_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250508031506_0.jpg&w=800&h=800', 'img\\111369_1.jpeg'),
+(154, '111348', '111348_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250503044808_0.jpg&w=800&h=800', 'img\\111348_1.jpeg'),
+(155, '111326', '111326_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250426034754_0.jpg&w=800&h=800', 'img\\111326_1.jpeg'),
+(156, '111304', '111304_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250422052040_0.jpg&w=800&h=800', 'img\\111304_1.jpeg'),
+(157, '111241', '111241_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250402114609_0.jpg&w=800&h=800', 'img\\111241_1.jpeg'),
+(158, '111219', '111219_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250326115249_0.jpg&w=800&h=800', 'img\\111219_1.jpeg'),
+(159, '111143', '111143_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250303023426_0.jpg&w=800&h=800', 'img\\111143_1.jpeg'),
+(160, '111142', '111142_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250303023114_0.jpg&w=800&h=800', 'img\\111142_1.jpeg'),
+(161, '111055', '111055_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250129095250_0.jpg&w=800&h=800', 'img\\111055_1.jpeg'),
+(162, '111029', '111029_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250117114121_0.jpg&w=800&h=800', 'img\\111029_1.jpeg'),
+(163, '111014', '111014_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250114111329_0.jpg&w=800&h=800', 'img\\111014_1.jpeg'),
+(164, '110998', '110998_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250108114132_0.jpg&w=800&h=800', 'img\\110998_1.jpeg'),
+(165, '110997', '110997_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250108113128_0.jpg&w=800&h=800', 'img\\110997_1.jpeg'),
+(166, '110996', '110996_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250108112542_0.jpg&w=800&h=800', 'img\\110996_1.jpeg'),
+(167, '110975', '110975_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241231054213_0.jpg&w=800&h=800', 'img\\110975_1.jpeg'),
+(168, '110969', '110969_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241226040642_0.jpg&w=800&h=800', 'img\\110969_1.jpeg'),
+(169, '110968', '110968_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241226040422_0.jpg&w=800&h=800', 'img\\110968_1.jpeg'),
+(170, '110967', '110967_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241226040147_0.jpg&w=800&h=800', 'img\\110967_1.jpeg'),
+(171, '110951', '110951_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241221035414_0.jpg&w=800&h=800', 'img\\110951_1.jpeg'),
+(172, '110933', '110933_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241218121942_0.jpg&w=800&h=800', 'img\\110933_1.jpeg'),
+(173, '110932', '110932_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241217040812_0.jpg&w=800&h=800', 'img\\110932_1.jpeg'),
+(174, '110902', '110902_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241205011013_0.jpg&w=800&h=800', 'img\\110902_1.jpeg'),
+(175, '110797', '110797_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241115054646_0.jpg&w=800&h=800', 'img\\110797_1.jpeg'),
+(176, '110788', '110788_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241113032117_0.jpg&w=800&h=800', 'img\\110788_1.jpeg'),
+(177, '110738', '110738_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250117114541_0.jpg&w=800&h=800', 'img\\110738_1.jpeg'),
+(178, '110657', '110657_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241011113206_0.jpg&w=800&h=800', 'img\\110657_1.jpeg'),
+(179, '110656', '110656_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241011112035_0.jpg&w=800&h=800', 'img\\110656_1.jpeg'),
+(180, '110631', '110631_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241213102130_0.jpg&w=800&h=800', 'img\\110631_1.jpeg'),
+(181, '111429', '111429_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250528101754_0.jpg&w=800&h=800', 'img\\111429_1.jpeg'),
+(182, '111373', '111373_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250510125249_0.jpg&w=800&h=800', 'img\\111373_1.jpeg'),
+(183, '111232', '111232_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250329094746_0.jpg&w=800&h=800', 'img\\111232_1.jpeg'),
+(184, '111170', '111170_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250311014540_0.jpg&w=800&h=800', 'img\\111170_1.jpeg'),
+(185, '111168', '111168_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250311115409_0.jpg&w=800&h=800', 'img\\111168_1.jpeg'),
+(186, '111116', '111116_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250221121428_0.jpg&w=800&h=800', 'img\\111116_1.jpeg'),
+(187, '111044', '111044_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250123025609_0.jpg&w=800&h=800', 'img\\111044_1.jpeg'),
+(188, '110989', '110989_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250102051745_0.jpg&w=800&h=800', 'img\\110989_1.jpeg'),
+(189, '110888', '110888_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241130041125_0.jpg&w=800&h=800', 'img\\110888_1.jpeg'),
+(190, '110791', '110791_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241114011102_0.jpg&w=800&h=800', 'img\\110791_1.jpeg'),
+(191, '110772', '110772_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241105051200_0.jpg&w=800&h=800', 'img\\110772_1.jpeg'),
+(192, '110752', '110752_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241102050203_0.jpg&w=800&h=800', 'img\\110752_1.jpeg'),
+(193, '110751', '110751_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241102044952_0.jpeg&w=800&h=800', 'img\\110751_1.jpeg'),
+(194, '110745', '110745_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241031123527_0.jpg&w=800&h=800', 'img\\110745_1.jpeg'),
+(195, '110718', '110718_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241022024315_0.jpg&w=800&h=800', 'img\\110718_1.jpeg'),
+(196, '110713', '110713_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241021024027_0.jpg&w=800&h=800', 'img\\110713_1.jpeg'),
+(197, '110712', '110712_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241020093608_0.jpg&w=800&h=800', 'img\\110712_1.jpeg'),
+(198, '110689', '110689_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241015034105_0.jpg&w=800&h=800', 'img\\110689_1.jpeg'),
+(199, '110662', '110662_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241012035811_0.jpg&w=800&h=800', 'img\\110662_1.jpeg'),
+(200, '110643', '110643_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241008065003_0.jpg&w=800&h=800', 'img\\110643_1.jpeg'),
+(201, '110633', '110633_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20241003090217_0.jpg&w=800&h=800', 'img\\110633_1.jpeg'),
+(202, '110614', '110614_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240925040350_0.jpg&w=800&h=800', 'img\\110614_1.jpeg'),
+(203, '110558', '110558_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240912103442_0.jpg&w=800&h=800', 'img\\110558_1.jpeg'),
+(204, '110527', '110527_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250107025533_0.jpg&w=800&h=800', 'img\\110527_1.jpeg'),
+(205, '110520', '110520_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240904014738_0.jpg&w=800&h=800', 'img\\110520_1.jpeg'),
+(206, '110487', '110487_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20250107025708_0.jpg&w=800&h=800', 'img\\110487_1.jpeg'),
+(207, '110459', '110459_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240823040825_0.jpg&w=800&h=800', 'img\\110459_1.jpeg'),
+(208, '110455', '110455_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240823105817_0.jpg&w=800&h=800', 'img\\110455_1.jpeg'),
+(209, '110440', '110440_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240820013234_0.jpg&w=800&h=800', 'img\\110440_1.jpeg'),
+(210, '110429', '110429_1.jpeg', 'https://www.shsmusic.tw//module/smallimg3.php?path=product/pro_20240928125356_0.jpg&w=800&h=800', 'img\\110429_1.jpeg');
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `vinyl_status`
 --
 
@@ -3655,6 +4053,12 @@ ALTER TABLE `vinyl_genre`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `vinyl_img`
+--
+ALTER TABLE `vinyl_img`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `vinyl_status`
 --
 ALTER TABLE `vinyl_status`
@@ -3728,13 +4132,13 @@ ALTER TABLE `condition`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '優惠券ID';
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '優惠券ID', AUTO_INCREMENT=51;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `coupon_rules`
 --
 ALTER TABLE `coupon_rules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `coupon_sends`
@@ -3746,7 +4150,7 @@ ALTER TABLE `coupon_sends`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `coupon_targets`
 --
 ALTER TABLE `coupon_targets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `coupon_triggers`
@@ -3855,6 +4259,12 @@ ALTER TABLE `vinyl_gender`
 --
 ALTER TABLE `vinyl_genre`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `vinyl_img`
+--
+ALTER TABLE `vinyl_img`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
 
 --
 -- 已傾印資料表的限制式
